@@ -46,18 +46,66 @@ print(" > L'aire d'un triangle rectangle, c'est un rectangle d'une (Longeur de 1
 #print(result)
 
 #---
+# Write a letter.
+# param letter : A, B, C or D
+# param forwardOrBackward : 0=forward, 1=backward
+#---
+def writeLetter(letter, forwardOrBackward):
+    up()
+
+    if(forwardOrBackward):
+        backward(decalage)
+    else:
+        forward(decalage)
+
+    write(letter)
+
+    if(forwardOrBackward):
+        forward(decalage)
+    else:
+        backward(decalage)
+
+    down()
+
+#---
+# Write a rectangle
+#---
+def displayRectangle(longueur, hauteur, deltaWriteLetter):
+
+    writeLetter("A", 1)
+    forward(longueur)
+
+    writeLetter("B", 0)
+    right(90)
+    forward(hauteur)
+
+    writeLetter("C", 0)
+    right(90)
+    forward(longueur)
+
+    writeLetter("D", 0)
+    right(90)
+    forward(hauteur)
+
+#---
+# Triangle rectangle en A, soit a2 + b2 = c2
+# soit sqrt(a**2 + b**2) = c
+# param a : 
+# link : https://fr.wikihow.com/calculer-la-longueur-de-l%27hypoténuse
+#---
+def hypotenuse(a, b):
+    return sqrt(a**2 + b**2)
+
+
+#---
 # Trace un rectangle
 #---
 longueur = 200
 hauteur = 80
+decalage=10
 
-forward(longueur)
-right(90)
-forward(hauteur)
-right(90)
-forward(longueur)
-right(90)
-forward(hauteur)
+displayRectangle(longueur, hauteur, decalage)
+
 right(90) #se repositionne à 90 afin de tracer une ligne horizontale
 
 # Trace l'hypoténuse (a**2 = b**2 + c**2, par exemple 3**2 + 4**2 = 5**2)
@@ -66,7 +114,7 @@ right(90) #se repositionne à 90 afin de tracer une ligne horizontale
 # Ce qui revient à calculer l'angle b, tan b=ac/ab soit hauteur/longueur
 right(90 - degrees(atan(longueur/hauteur)))
 color("red")
-forward( sqrt(longueur**2 + hauteur**2) ) #Hypoténuse= a2 = b2 + c2 -> sqrt(b2 + c2) = hypoténuse
+forward( hypotenuse(longueur, hauteur) ) #Hypoténuse= a2 = b2 + c2 -> sqrt(b2 + c2) = hypoténuse
 
 #---
 # Triangle rectangle en A, l'angle b=ac/ab = tan b -> inv tan(b) en radian
