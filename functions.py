@@ -5,7 +5,7 @@ if(len(username) == 0):
 else:
     print("Bonjour", username)
 
-    result = input("Combien fait 46 + 4 = ")
+    result = input("Combien font 46 + 4 = ")
     if(int(result) == 50):
         print("C'est bien " + username)
     else: print("Domage, le résultat est ", str(46+4))

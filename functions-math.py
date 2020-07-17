@@ -16,7 +16,7 @@ from math import *
 # color(string)
 # left(angle)
 # right(angle)
-# witdh(épaisseur
+# width(épaisseur)
 # fill(1) remplir un contour fermé à l'aide de la couleur sélectionnée
 # write(string)
 #######################################
@@ -26,17 +26,15 @@ from math import *
 print(" > pi = " + str(pi))
 print(" > air d'un cercle (r=5cm) : pi * r * r -> ", pi * 5**2, "cm2")
 print(" > périmétre d'un cercle (r=5cm) : 2 * pi * r", 2 * pi * 5, "cm")
-print(" > Racine carrée de", 121, sqrt(121))
-print(" > Sinus de", pi/6, "radians", "=", sin(pi/6))
 
 # Aire d'un triangle A=(B * H)/2
 aire = (7 * 4) / 2
 print(" > L'aire d'un triangle", "=", "(B*H)/2", "(7 * 4) / 2", "=", aire, "cm2")
 
-# Aire d'un rectangle, c'est tout d'abord deux triangles rectangles.
-# Aire d'un rectangle Longeur * largeur, donc pour un triangle rectangle (L * l) / 2
+# Un rectangle, c'est tout d'abord deux triangles rectangles.
+# L'aire d'un rectangle longeur * largeur, pour un triangle rectangle se sera (L * l) / 2
 print(" > L'aire d'un triangle rectangle, c'est un rectangle d'une (Longeur de 10 et d'une Largeur de 5) / 2", "=", 
-    (10 * 5) / 2, "cm2");
+    (10 * 5) / 2, "cm2")
 #######################################
 
 #######################################
@@ -45,43 +43,45 @@ print(" > L'aire d'un triangle rectangle, c'est un rectangle d'une (Longeur de 1
 # Write a letter.
 # param letter : A, B, C or D
 # param forwardOrBackward : 0=forward, 1=backward
-def writeLetter(letter, forwardOrBackward):
+def write_letter(letter, forward_or_backward):
     up()
 
-    if(forwardOrBackward):
+    if forward_or_backward:
         backward(decalage)
     else:
         forward(decalage)
 
     write(letter)
 
-    if(forwardOrBackward):
+    if forward_or_backward:
         forward(decalage)
     else:
         backward(decalage)
 
     down()
 
+
 # Write a rectangle
 # param longueur
 # param hauteur
 # param deltaWriteLetter
-def displayRectangle(longueur, hauteur, deltaWriteLetter):
+def display_rectangle(longueur, hauteur):
 
-    writeLetter("A", 1)
+    write_letter("A", 1)
     forward(longueur)
 
-    writeLetter("B", 0)
+    write_letter("B", 0)
     right(90)
     forward(hauteur)
 
-    writeLetter("C", 0)
+    write_letter("C", 0)
     right(90)
     forward(longueur)
 
-    writeLetter("D", 0)
+    write_letter("D", 0)
     right(90)
     forward(hauteur)
+
 
 # Triangle rectangle en A, soit a2 + b2 = c2
 # soit sqrt(a**2 + b**2) = c
@@ -90,6 +90,11 @@ def displayRectangle(longueur, hauteur, deltaWriteLetter):
 # link https://fr.wikihow.com/calculer-la-longueur-de-l%27hypoténuse
 def hypotenuse(a, b):
     return sqrt(a**2 + b**2)
+
+
+def aire_triangle(base, hauteur):
+    return (base * hauteur) / 2
+
 #######################################
 
 #######################################
@@ -104,7 +109,7 @@ longueur = 200
 hauteur = 80
 decalage=10
 
-displayRectangle(longueur, hauteur, decalage)
+display_rectangle(longueur, hauteur)
 
 right(90) #se repositionne à 90 afin de tracer une ligne horizontale
 
